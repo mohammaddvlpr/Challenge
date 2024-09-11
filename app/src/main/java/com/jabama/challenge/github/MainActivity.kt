@@ -6,9 +6,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-const val CLIENT_ID = "CLIENT_ID"
-const val CLIENT_SECRET = "CLIENT_SECRET"
-const val REDIRECT_URI = "REDIRECT_URI"
+const val CLIENT_ID = "Ov23liNJmGQ53rBTtUCC"
+const val CLIENT_SECRET = "bbb212a4078de9c927ec8cae049b85c15ad32fab"
+const val REDIRECT_URI = "oauth://jabamatest.com"
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

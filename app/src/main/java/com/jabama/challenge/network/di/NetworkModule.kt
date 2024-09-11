@@ -19,9 +19,9 @@ const val WRITE_TIMEOUT = "WRITE_TIMEOUT"
 const val CONNECTION_TIMEOUT = "CONNECTION_TIMEOUT"
 val networkModule = module {
 
-    single(named(READ_TIMEOUT)) { 30 * 1000 }
-    single(named(WRITE_TIMEOUT)) { 10 * 1000 }
-    single(named(CONNECTION_TIMEOUT)) { 10 * 1000 }
+    single<Long>(named(READ_TIMEOUT)) { 30 * 1000 }
+    single<Long>(named(WRITE_TIMEOUT)) { 10 * 1000 }
+    single<Long>(named(CONNECTION_TIMEOUT)) { 10 * 1000 }
 
     factory<Interceptor> {
         HttpLoggingInterceptor()
