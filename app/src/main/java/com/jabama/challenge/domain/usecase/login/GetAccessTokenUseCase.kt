@@ -6,9 +6,6 @@ import com.jabama.challenge.repository.token.TokenRepository
 import com.jabama.challenge.ui.main.CLIENT_ID
 import com.jabama.challenge.ui.main.CLIENT_SECRET
 import com.jabama.challenge.ui.main.REDIRECT_URI
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class GetAccessTokenUseCase(
     private val tokenRepository: TokenRepository,
@@ -26,9 +23,8 @@ class GetAccessTokenUseCase(
                 "0"
             )
         )
-
-//        todo: replace async in repo with suspend fun and uncomment
-//        tokenRepository.saveToken(response.accessToken)
+//      todo:fix below issues
+        tokenRepository.saveToken(response.accessToken)
     }
 
 }
