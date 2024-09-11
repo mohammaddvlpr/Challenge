@@ -46,7 +46,7 @@ class LoginUriActivity : AppCompatActivity() {
     private fun handleAuthorizationCode(intent: Intent?) {
         if (Intent.ACTION_VIEW == intent?.action) {
             val uri = intent.data
-            val code = uri?.getQueryParameter("code") ?: ""
+            val code = uri?.getQueryParameter("code")
 
             loginViewModel.onAuthorizationCodeReceived(code)
 

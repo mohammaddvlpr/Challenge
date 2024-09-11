@@ -26,7 +26,7 @@ class LoginViewModel(
     private val _showProgress = MutableLiveData(false)
     val showProgress: LiveData<Boolean> = _showProgress
 
-    fun onAuthorizationCodeReceived(code: String) {
+    fun onAuthorizationCodeReceived(code: String?) {
         code.takeIf { it.isNotEmpty() }?.let {
 
             _description.value = R.string.authorization_code_received_message
