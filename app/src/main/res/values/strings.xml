@@ -2,4 +2,5 @@
     <string name="app_name">Github Login</string>
     <string name="action_settings">Settings</string>
     <string name="authorize">AUTHORIZE</string>
+    <string name="authorization_code_received_message">کد authorization دریافت شد، لطفا منتظر بمانید تا access token دریافت بشود.</string>
 </resources>

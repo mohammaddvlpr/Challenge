@@ -1,6 +1,9 @@
 package com.jabama.challenge.ui.login
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.jabama.challenge.github.R
 import com.jabama.challenge.network.oauth.RequestAccessToken
 import com.jabama.challenge.repository.oauth.AccessTokenDataSource
 import com.jabama.challenge.repository.token.TokenRepository
@@ -17,8 +20,18 @@ class LoginViewModel(
     private val tokenRepository: TokenRepository,
     private val accessTokenDataSource: AccessTokenDataSource
 ) : ViewModel() {
+    private val _description = MutableLiveData(0)
+    val description: LiveData<Int> = _description
+
+    private val _showProgress = MutableLiveData(false)
+    val showProgress: LiveData<Boolean> = _showProgress
+
     fun onAuthorizationCodeReceived(code: String) {
         code.takeIf { it.isNotEmpty() }?.let {
+
+            _description.value = R.string.authorization_code_received_message
+            _showProgress.value = true
+
             val accessTokenJob = CoroutineScope(Dispatchers.IO).launch {
                 val response = accessTokenDataSource.accessToken(
                     RequestAccessToken(
@@ -42,4 +55,5 @@ class LoginViewModel(
             }
         }
     }
+
 }
