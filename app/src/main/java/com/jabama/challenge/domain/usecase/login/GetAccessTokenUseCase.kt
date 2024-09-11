@@ -13,7 +13,7 @@ class GetAccessTokenUseCase(
 ) {
 
 
-    suspend operator fun invoke(authorizationCode: String) {
+    suspend operator fun invoke(authorizationCode: String): Boolean {
         val response = accessTokenDataSource.accessToken(
             RequestAccessToken(
                 CLIENT_ID,
@@ -23,10 +23,16 @@ class GetAccessTokenUseCase(
                 "0"
             )
         )
-//      todo:fix below issues
-        tokenRepository.saveToken(response.accessToken)
+
+        val body = response.body()
+
+        return if (body != null && response.isSuccessful) {
+            tokenRepository.saveToken(body.accessToken)
+            true
+
+        } else
+            false
     }
 
 }
 
-}
