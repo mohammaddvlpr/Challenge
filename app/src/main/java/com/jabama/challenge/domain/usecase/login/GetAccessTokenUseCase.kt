@@ -16,22 +16,21 @@ class GetAccessTokenUseCase(
 ) {
 
 
-    suspend operator fun invoke(authorizationCode:String){
-//        todo: replace async in repo with suspend fun
-        val accessTokenJob = CoroutineScope(Dispatchers.IO).launch {
-            val response = accessTokenDataSource.accessToken(
-                RequestAccessToken(
-                    CLIENT_ID,
-                    CLIENT_SECRET,
-                    authorizationCode,
-                    REDIRECT_URI,
-                    "0"
-                )
-            ).await()
+    suspend operator fun invoke(authorizationCode: String) {
+        val response = accessTokenDataSource.accessToken(
+            RequestAccessToken(
+                CLIENT_ID,
+                CLIENT_SECRET,
+                authorizationCode,
+                REDIRECT_URI,
+                "0"
+            )
+        )
 
-            tokenRepository.saveToken(response.accessToken).await()
-        }
-
+//        todo: replace async in repo with suspend fun and uncomment
+//        tokenRepository.saveToken(response.accessToken)
     }
+
+}
 
 }
