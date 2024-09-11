@@ -1,4 +1,4 @@
-package com.jabama.challenge.github
+package com.jabama.challenge.login
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

@@ -1,4 +1,4 @@
-package com.jabama.challenge.github
+package com.jabama.challenge.login
 
 import org.junit.Test
 
