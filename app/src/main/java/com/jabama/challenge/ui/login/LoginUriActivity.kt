@@ -3,6 +3,7 @@ package com.jabama.challenge.ui.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import com.jabama.challenge.github.R
 import com.jabama.challenge.network.oauth.RequestAccessToken
 import com.jabama.challenge.repository.oauth.AccessTokenDataSource
 import com.jabama.challenge.repository.token.TokenRepository
