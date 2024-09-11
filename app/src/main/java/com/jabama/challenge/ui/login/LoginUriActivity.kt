@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.jabama.challenge.github.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -22,12 +23,17 @@ class LoginUriActivity : AppCompatActivity() {
     }
 
     private fun observe() {
-        loginViewModel.description.observe(this) {}
-        loginViewModel.showProgress.observe(this) {}
+        loginViewModel.description.observe(this) {
+            description.text = getString(it)
+        }
+        loginViewModel.showProgress.observe(this) {
+            progress.isVisible = it
+        }
     }
 
     private fun initViews() {
-        TODO("Not yet implemented")
+        description = findViewById(R.id.description)
+        progress = findViewById(R.id.progress)
     }
 
     override fun onResume() {
