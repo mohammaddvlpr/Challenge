@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.preference.PreferenceManager
 import com.jabama.challenge.network.di.accessTokenModule
 import com.jabama.challenge.network.di.networkModule
+import com.jabama.challenge.network.di.useCaseModule
 import com.jabama.challenge.network.di.viewModelModule
 import com.jabama.challenge.repository.token.TokenRepositoryImpl
 import org.koin.android.ext.koin.androidContext
@@ -19,7 +20,15 @@ class App : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@App)
-            modules(listOf(appModule, networkModule, accessTokenModule, viewModelModule))
+            modules(
+                listOf(
+                    appModule,
+                    networkModule,
+                    accessTokenModule,
+                    viewModelModule,
+                    useCaseModule
+                )
+            )
         }
     }
 
