@@ -15,6 +15,7 @@ const val REDIRECT_URI = "oauth://jabamatest.com"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var authorize: Button
+    private lateinit var search: Button
     private lateinit var description: TextView
     private val mainViewModel: MainViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +39,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         description = findViewById(R.id.description)
+        search = findViewById(R.id.search)
+
+
+        search.setOnClickListener {
+
+        }
     }
 
     private fun observe() {
