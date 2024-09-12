@@ -1,8 +1,10 @@
 package com.jabama.challenge.repository.search.paging
 
+import android.nfc.tech.MifareUltralight.PAGE_SIZE
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.jabama.challenge.domain.usecase.search.model.SearchModel
+import com.jabama.challenge.network.search.SearchRepositoryModel
 import com.jabama.challenge.network.search.SearchService
 import com.jabama.challenge.repository.apiCall
 import com.jabama.challenge.repository.search.SearchMapper
@@ -10,13 +12,24 @@ import com.jabama.challenge.repository.search.SearchMapper
 class SearchPagingSource(
     private val query: String,
     private val searchService: SearchService,
-    searchMapper: SearchMapper,
+    private val searchMapper: SearchMapper,
 ) : PagingSource<Int, SearchModel>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SearchModel> {
         val key = params.key ?: 0
         val result = apiCall { searchService.search(query = query) }
 
-        TODO()
+        return if (result.isSuccess) {
+            val model = result.getOrDefault(SearchRepositoryModel(listOf()))
+            LoadResult.Page(
+                data = searchMapper.mapToDomain(model.items),
+                prevKey = null,
+                nextKey = if (model.items.size < PAGE_SIZE) null else key + 1
+            )
+
+        } else
+            LoadResult.Error(
+                result.exceptionOrNull() ?: Exception("ProductPagingSource: Error not known")
+            )
     }
 
     override fun getRefreshKey(state: PagingState<Int, SearchModel>): Int? {
