@@ -6,7 +6,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.jabama.challenge.github.R
+import com.jabama.challenge.login.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginUriActivity : AppCompatActivity() {
