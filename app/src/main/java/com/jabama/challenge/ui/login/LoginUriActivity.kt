@@ -2,17 +2,20 @@ package com.jabama.challenge.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.jabama.challenge.login.R
+import com.jabama.challenge.ui.search.SearchActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginUriActivity : AppCompatActivity() {
     private val loginViewModel: LoginViewModel by viewModel()
     private lateinit var description: TextView
     private lateinit var progress: ProgressBar
+    private lateinit var search: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,11 @@ class LoginUriActivity : AppCompatActivity() {
     private fun initViews() {
         description = findViewById(R.id.description)
         progress = findViewById(R.id.progress)
+        search = findViewById(R.id.search)
+
+        search.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
+        }
     }
 
     override fun onResume() {
