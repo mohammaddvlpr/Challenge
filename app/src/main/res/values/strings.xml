@@ -5,4 +5,6 @@
     <string name="authorization_code_received_message">کد authorization دریافت شد، لطفا منتظر بمانید تا access token دریافت بشود.</string>
     <string name="access_token_received_message">با موفقیت access token را دریافت کردیم، میتوانید از قابلیتهای برنامه استفاده کنید</string>
     <string name="please_wait">لطفا صبر کنید</string>
+    <string name="already_login_message">شما با موفقیت وارد شده‌اید،برای جستجو در github روی جستجو بزنید.\nبرای تغییر حساب کاربری روی Authorize بزنید.</string>
+    <string name="start_message">برای شروع روی Authorize بزنید.</string>
 </resources>
