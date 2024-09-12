@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.jabama.challenge.login.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -14,13 +15,19 @@ const val REDIRECT_URI = "oauth://jabamatest.com"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var authorize: Button
+    private lateinit var description: TextView
     private val mainViewModel: MainViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initViews()
         observe()
 
+
+    }
+
+    private fun initViews() {
         authorize = findViewById(R.id.authorize)
         authorize.setOnClickListener {
             val url =
@@ -29,11 +36,14 @@ class MainActivity : AppCompatActivity() {
             i.data = Uri.parse(url)
             startActivity(i)
         }
+
+        description = findViewById(R.id.description)
     }
 
     private fun observe() {
-        mainViewModel.description.observe(this){
-
+        mainViewModel.description.observe(this) {
+            if (it > 0)
+                description.text = getString(it)
         }
     }
 }
