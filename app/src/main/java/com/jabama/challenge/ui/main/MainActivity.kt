@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.jabama.challenge.login.R
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 const val CLIENT_ID = "Ov23liNJmGQ53rBTtUCC"
 const val CLIENT_SECRET = "bbb212a4078de9c927ec8cae049b85c15ad32fab"
@@ -13,6 +14,7 @@ const val REDIRECT_URI = "oauth://jabamatest.com"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var authorize: Button
+    private val mainViewModel: MainViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
