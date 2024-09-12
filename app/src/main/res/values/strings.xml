@@ -8,4 +8,5 @@
     <string name="already_login_message">شما با موفقیت وارد شده‌اید،برای جستجو در github روی جستجو بزنید.\nبرای تغییر حساب کاربری روی Authorize بزنید.</string>
     <string name="start_message">برای شروع روی Authorize بزنید.</string>
     <string name="search">SEARCH</string>
+    <string name="repository_image">this is the repository image</string>
 </resources>
