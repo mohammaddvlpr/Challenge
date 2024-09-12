@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.jabama.challenge.login.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -51,6 +52,10 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.description.observe(this) {
             if (it > 0)
                 description.text = getString(it)
+        }
+
+        mainViewModel.showSearch.observe(this) {
+            search.isVisible = it
         }
     }
 }

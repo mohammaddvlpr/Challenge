@@ -13,12 +13,17 @@ class MainViewModel(private val getIsLoginUseCase: GetIsLoginUseCase) : ViewMode
     private val _description = MutableLiveData(0)
     val description: LiveData<Int> = _description
 
+    private val _showSearch = MutableLiveData(false)
+    val showSearch: LiveData<Boolean> = _showSearch
+
+
     init {
         viewModelScope.launch {
             val isLogin = getIsLoginUseCase()
+            _showSearch.value = isLogin
 
-            if (isLogin)
-                _description.value = R.string.already_login_message
+            if (isLogin) _description.value =
+                R.string.already_login_message
             else
                 _description.value = R.string.start_message
 
