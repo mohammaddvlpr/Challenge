@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        observe()
+
         authorize = findViewById(R.id.authorize)
         authorize.setOnClickListener {
             val url =
@@ -26,6 +28,12 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse(url)
             startActivity(i)
+        }
+    }
+
+    private fun observe() {
+        mainViewModel.description.observe(this){
+
         }
     }
 }
