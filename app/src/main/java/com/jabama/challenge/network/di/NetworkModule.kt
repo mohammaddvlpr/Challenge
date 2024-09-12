@@ -1,8 +1,10 @@
 package com.jabama.challenge.network.di
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.jabama.challenge.repository.search.SearchRepository
+import com.jabama.challenge.repository.search.SearchRepositoryImpl
 import com.jabama.challenge.repository.token.TokenRepository
 import com.jabama.challenge.repository.token.TokenRepositoryImpl
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -49,5 +51,9 @@ val networkModule = module {
 
     single {
         TokenRepositoryImpl(get()) as TokenRepository
+    }
+
+    factory {
+        SearchRepositoryImpl(get()) as SearchRepository
     }
 }
