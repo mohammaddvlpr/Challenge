@@ -5,10 +5,12 @@ import androidx.paging.PagingState
 import com.jabama.challenge.domain.usecase.search.model.SearchModel
 import com.jabama.challenge.network.search.SearchService
 import com.jabama.challenge.repository.apiCall
+import com.jabama.challenge.repository.search.SearchMapper
 
 class SearchPagingSource(
     private val query: String,
     private val searchService: SearchService,
+    searchMapper: SearchMapper,
 ) : PagingSource<Int, SearchModel>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SearchModel> {
         val key = params.key ?: 0

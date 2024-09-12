@@ -10,6 +10,6 @@ import retrofit2.Retrofit
 val searchModule = module {
     factory {
         factory { get<Retrofit>(named(RETROFIT)).create(SearchService::class.java) }
-        factory<SearchRemoteDataSource> { SearchRemoteRemoteDataSourceImpl(get()) }
+        factory<SearchRemoteDataSource> { SearchRemoteRemoteDataSourceImpl(get(), get()) }
     }
 }
