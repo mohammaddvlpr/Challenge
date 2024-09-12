@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
 import com.jabama.challenge.login.R
 import com.jabama.challenge.ui.HyperLinkText
@@ -49,13 +50,20 @@ class SearchActivity : AppCompatActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreenContent(searchScreenState: SearchScreenState) {
+
+    val items = searchScreenState.pagingFlow.collectAsLazyPagingItems()
     SearchBar(query = searchScreenState.query,
         onQueryChange = {},
         onSearch = {},
         active = true,
         onActiveChange = {}) {
         LazyColumn {
+            items(count = items.itemCount) {
+                val item = items[it]
+                if (item != null)
+                    SearchItem(searchUiModel = item)
 
+            }
         }
     }
 }
