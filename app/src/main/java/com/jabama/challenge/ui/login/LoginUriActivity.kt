@@ -32,6 +32,10 @@ class LoginUriActivity : AppCompatActivity() {
         loginViewModel.showProgress.observe(this) {
             progress.isVisible = it
         }
+
+        loginViewModel.showSearch.observe(this) {
+            search.isVisible = it
+        }
     }
 
     private fun initViews() {

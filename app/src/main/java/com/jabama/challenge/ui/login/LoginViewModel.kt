@@ -17,6 +17,9 @@ class LoginViewModel(
     private val _showProgress = MutableLiveData(false)
     val showProgress: LiveData<Boolean> = _showProgress
 
+    private val _showSearch = MutableLiveData(false)
+    val showSearch: LiveData<Boolean> = _showSearch
+
     fun onAuthorizationCodeReceived(code: String?) {
         code.takeIf { !it.isNullOrEmpty() }?.let {
             _description.value = R.string.authorization_code_received_message
@@ -24,9 +27,10 @@ class LoginViewModel(
 
             viewModelScope.launch {
                 val result = getAccessTokenUseCase(it)
-                if (result){
+                if (result) {
                     _description.value = R.string.access_token_received_message
                     _showProgress.value = false
+                    _showSearch.value = true
                 }
 
             }
