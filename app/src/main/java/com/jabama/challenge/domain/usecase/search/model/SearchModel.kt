@@ -4,5 +4,5 @@ data class SearchModel(
     val fullName: String,
     val avatarUrl: String,
     val url: String,
-    val privacy: String
+    val isPrivate: Boolean
 )

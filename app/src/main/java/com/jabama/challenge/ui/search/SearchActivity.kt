@@ -22,9 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.jabama.challenge.domain.usecase.search.model.SearchModel
 import com.jabama.challenge.login.R
 import com.jabama.challenge.ui.HyperLinkText
+import com.jabama.challenge.ui.search.model.SearchUiModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -59,13 +59,13 @@ fun SearchScreenContent() {
 @Composable
 fun SearchItem(
     modifier: Modifier = Modifier,
-    searchModel: SearchModel
+    searchUiModel: SearchUiModel
 ) {
     Row(modifier) {
 
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = searchModel.fullName,
+                text = searchUiModel.fullName,
                 overflow = TextOverflow.Ellipsis,
                 fontSize = 18.sp,
                 maxLines = 1,
@@ -73,19 +73,19 @@ fun SearchItem(
             )
 
             Text(
-                text = searchModel.privacy,
+                text = searchUiModel.privacy,
                 overflow = TextOverflow.Ellipsis,
                 fontSize = 16.sp,
             )
 
             HyperLinkText(
-                url = searchModel.url,
+                url = searchUiModel.url,
             )
 
 
         }
         AsyncImage(
-            model = searchModel.avatarUrl,
+            model = searchUiModel.avatarUrl,
             modifier = Modifier.clip(RoundedCornerShape(8.dp)).aspectRatio(1f).fillMaxHeight(),
             contentDescription = stringResource(R.string.repository_image)
         )
@@ -98,7 +98,7 @@ fun SearchItem(
 @Composable
 fun SearchItemPrev() {
     SearchItem(
-        searchModel = SearchModel(
+        searchUiModel = SearchUiModel(
             "Tetris game",
             "https://avatars.githubusercontent.com/u/54574371?v=4&size=64",
             url = "https://github.com/pouyaam/JabamaCodeChallenge",
