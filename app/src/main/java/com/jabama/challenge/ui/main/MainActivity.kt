@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.jabama.challenge.login.R
+import com.jabama.challenge.ui.search.SearchActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 const val CLIENT_ID = "Ov23liNJmGQ53rBTtUCC"
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
 
         search.setOnClickListener {
-
+            startActivity(Intent(this, SearchActivity::class.java))
         }
     }
 
