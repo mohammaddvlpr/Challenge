@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.jabama.challenge.login.R
 import com.jabama.challenge.ui.HyperLinkText
+import com.jabama.challenge.ui.search.model.SearchScreenState
 import com.jabama.challenge.ui.search.model.SearchUiModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -35,7 +36,7 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            SearchScreenContent()
+            SearchScreenContent(searchScreenState = SearchScreenState(""))
         }
 
     }
@@ -44,8 +45,8 @@ class SearchActivity : AppCompatActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchScreenContent() {
-    SearchBar(query = "",
+fun SearchScreenContent(searchScreenState: SearchScreenState) {
+    SearchBar(query = searchScreenState.query,
         onQueryChange = {},
         onSearch = {},
         active = true,
