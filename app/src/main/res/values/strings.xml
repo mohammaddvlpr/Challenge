@@ -4,4 +4,5 @@
     <string name="authorize">AUTHORIZE</string>
     <string name="authorization_code_received_message">کد authorization دریافت شد، لطفا منتظر بمانید تا access token دریافت بشود.</string>
     <string name="access_token_received_message">با موفقیت access token را دریافت کردیم، میتوانید از قابلیتهای برنامه استفاده کنید</string>
+    <string name="please_wait">لطفا صبر کنید</string>
 </resources>

@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class LoginViewModel(
     private val getAccessTokenUseCase: GetAccessTokenUseCase
 ) : ViewModel() {
-    private val _description = MutableLiveData(0)
+    private val _description = MutableLiveData(R.string.please_wait)
     val description: LiveData<Int> = _description
 
     private val _showProgress = MutableLiveData(false)
