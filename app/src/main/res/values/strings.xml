@@ -9,4 +9,6 @@
     <string name="start_message">برای شروع روی Authorize بزنید.</string>
     <string name="search">SEARCH</string>
     <string name="repository_image">this is the repository image</string>
+    <string name="private_repo">private</string>
+    <string name="public_repo">public</string>
 </resources>

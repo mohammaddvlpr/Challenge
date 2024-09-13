@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
 import com.jabama.challenge.login.R
@@ -40,7 +41,10 @@ class SearchActivity : AppCompatActivity() {
 
         setContent {
             val state by searchViewModel.state.collectAsState()
-            SearchScreenContent(searchScreenState = state)
+            val pagingItems = searchViewModel.pagingFlow.collectAsLazyPagingItems()
+            SearchScreenContent(searchScreenState = state , pagingItems = pagingItems ){
+                searchViewModel.onQueryChange(it)
+            }
         }
 
     }
@@ -49,17 +53,20 @@ class SearchActivity : AppCompatActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchScreenContent(searchScreenState: SearchScreenState) {
+fun SearchScreenContent(
+    searchScreenState: SearchScreenState,
+    pagingItems: LazyPagingItems<SearchUiModel>,
+    onQueryChange: (String) -> Unit
+) {
 
-    val items = searchScreenState.pagingFlow.collectAsLazyPagingItems()
     SearchBar(query = searchScreenState.query,
-        onQueryChange = {},
+        onQueryChange = onQueryChange,
         onSearch = {},
         active = true,
         onActiveChange = {}) {
         LazyColumn {
-            items(count = items.itemCount) {
-                val item = items[it]
+            items(count = pagingItems.itemCount) {
+                val item = pagingItems[it]
                 if (item != null)
                     SearchItem(searchUiModel = item)
 
