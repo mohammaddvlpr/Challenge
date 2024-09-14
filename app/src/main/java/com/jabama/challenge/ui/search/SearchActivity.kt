@@ -3,10 +3,15 @@ package com.jabama.challenge.ui.search
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,6 +22,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -42,7 +48,7 @@ class SearchActivity : AppCompatActivity() {
         setContent {
             val state by searchViewModel.state.collectAsState()
             val pagingItems = searchViewModel.pagingFlow.collectAsLazyPagingItems()
-            SearchScreenContent(searchScreenState = state , pagingItems = pagingItems ){
+            SearchScreenContent(searchScreenState = state, pagingItems = pagingItems) {
                 searchViewModel.onQueryChange(it)
             }
         }
@@ -59,12 +65,15 @@ fun SearchScreenContent(
     onQueryChange: (String) -> Unit
 ) {
 
-    SearchBar(query = searchScreenState.query,
+    SearchBar(modifier = Modifier.fillMaxSize(), query = searchScreenState.query,
         onQueryChange = onQueryChange,
         onSearch = {},
         active = true,
         onActiveChange = {}) {
-        LazyColumn {
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(16.dp)
+        ) {
             items(count = pagingItems.itemCount) {
                 val item = pagingItems[it]
                 if (item != null)
@@ -80,9 +89,14 @@ fun SearchItem(
     modifier: Modifier = Modifier,
     searchUiModel: SearchUiModel
 ) {
-    Row(modifier) {
+    Row(
+        modifier
+            .fillMaxWidth()
+            .height(IntrinsicSize.Min),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
 
-        Column(modifier = Modifier.weight(1f)) {
+        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text(
                 text = searchUiModel.fullName,
                 overflow = TextOverflow.Ellipsis,
@@ -105,7 +119,12 @@ fun SearchItem(
         }
         AsyncImage(
             model = searchUiModel.avatarUrl,
-            modifier = Modifier.clip(RoundedCornerShape(8.dp)).aspectRatio(1f).fillMaxHeight(),
+            placeholder = painterResource(id = R.drawable.default_avatar),
+            error = painterResource(id = R.drawable.default_avatar),
+            modifier = Modifier
+                .clip(RoundedCornerShape(8.dp))
+                .aspectRatio(1f)
+                .fillMaxSize(),
             contentDescription = stringResource(R.string.repository_image)
         )
 
