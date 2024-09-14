@@ -208,6 +208,7 @@ fun SearchItem(
 fun SearchItemPrev() {
     SearchItem(
         searchUiModel = SearchUiModel(
+            id = 1,
             "Tetris game",
             "https://avatars.githubusercontent.com/u/54574371?v=4&size=64",
             url = "https://github.com/pouyaam/JabamaCodeChallenge",

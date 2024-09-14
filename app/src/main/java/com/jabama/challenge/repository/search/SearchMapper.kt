@@ -8,6 +8,7 @@ class SearchMapper {
     fun mapToDomain(items: List<SearchRepositorySingleModel>): List<SearchModel> {
         return items.map {
             SearchModel(
+                id = it.id,
                 fullName = it.fullName,
                 avatarUrl = it.avatarUrl,
                 url = it.url,

@@ -8,6 +8,7 @@ class UiMapper(private val appContext: Application) {
 
     fun mapToUi(searchModel: SearchModel): SearchUiModel {
         return SearchUiModel(
+            id = searchModel.id,
             fullName = searchModel.fullName,
             avatarUrl = searchModel.avatarUrl,
             url = searchModel.url,
