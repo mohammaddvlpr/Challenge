@@ -12,10 +12,12 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SearchBar
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -89,46 +91,52 @@ fun SearchItem(
     modifier: Modifier = Modifier,
     searchUiModel: SearchUiModel
 ) {
-    Row(
-        modifier
-            .fillMaxWidth()
-            .height(IntrinsicSize.Min),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
+    Surface(shadowElevation = 8.dp ,
+        tonalElevation = 8.dp,
+        shape = RoundedCornerShape(8.dp)
+        ) {
+        Row(
+            modifier
+                .padding(8.dp)
+                .fillMaxWidth()
+                .height(IntrinsicSize.Min),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
 
-        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(
-                text = searchUiModel.fullName,
-                overflow = TextOverflow.Ellipsis,
-                fontSize = 18.sp,
-                maxLines = 1,
-                fontWeight = FontWeight.Bold,
-            )
+            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = searchUiModel.fullName,
+                    overflow = TextOverflow.Ellipsis,
+                    fontSize = 18.sp,
+                    maxLines = 1,
+                    fontWeight = FontWeight.Bold,
+                )
 
-            Text(
-                text = searchUiModel.privacy,
-                overflow = TextOverflow.Ellipsis,
-                fontSize = 16.sp,
-            )
+                Text(
+                    text = searchUiModel.privacy,
+                    overflow = TextOverflow.Ellipsis,
+                    fontSize = 16.sp,
+                )
 
-            HyperLinkText(
-                url = searchUiModel.url,
+                HyperLinkText(
+                    url = searchUiModel.url,
+                )
+
+
+            }
+            AsyncImage(
+                model = searchUiModel.avatarUrl,
+                placeholder = painterResource(id = R.drawable.default_avatar),
+                error = painterResource(id = R.drawable.default_avatar),
+                modifier = Modifier
+                    .clip(RoundedCornerShape(8.dp))
+                    .aspectRatio(1f)
+                    .fillMaxSize(),
+                contentDescription = stringResource(R.string.repository_image)
             )
 
 
         }
-        AsyncImage(
-            model = searchUiModel.avatarUrl,
-            placeholder = painterResource(id = R.drawable.default_avatar),
-            error = painterResource(id = R.drawable.default_avatar),
-            modifier = Modifier
-                .clip(RoundedCornerShape(8.dp))
-                .aspectRatio(1f)
-                .fillMaxSize(),
-            contentDescription = stringResource(R.string.repository_image)
-        )
-
-
     }
 }
 
