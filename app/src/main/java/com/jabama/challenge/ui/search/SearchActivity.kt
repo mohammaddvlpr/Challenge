@@ -70,6 +70,7 @@ fun SearchScreenContent(
     SearchBar(modifier = Modifier.fillMaxSize(), query = searchScreenState.query,
         onQueryChange = onQueryChange,
         onSearch = {},
+        placeholder = { Text(text = stringResource(id = R.string.start_searching))},
         active = true,
         onActiveChange = {}) {
         LazyColumn(
