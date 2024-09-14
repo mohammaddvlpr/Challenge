@@ -1,6 +1,7 @@
 package com.jabama.challenge.ui.search
 
 import android.os.Bundle
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Arrangement
@@ -60,6 +61,10 @@ class SearchActivity : AppCompatActivity() {
                 pagingDataFlow = searchViewModel.pagingFlow
             ) {
                 searchViewModel.onQueryChange(it)
+            }
+
+            BackHandler {
+                finish()
             }
         }
 
