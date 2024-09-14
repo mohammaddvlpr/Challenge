@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
@@ -14,7 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -37,13 +36,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
-import androidx.paging.compose.LazyPagingItems
+import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
 import com.jabama.challenge.login.R
 import com.jabama.challenge.ui.HyperLinkText
 import com.jabama.challenge.ui.search.model.SearchScreenState
 import com.jabama.challenge.ui.search.model.SearchUiModel
+import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -55,8 +55,10 @@ class SearchActivity : AppCompatActivity() {
 
         setContent {
             val state by searchViewModel.state.collectAsState()
-            val pagingItems = searchViewModel.pagingFlow.collectAsLazyPagingItems()
-            SearchScreenContent(searchScreenState = state, pagingItems = pagingItems) {
+            SearchScreenContent(
+                searchScreenState = state,
+                pagingDataFlow = searchViewModel.pagingFlow
+            ) {
                 searchViewModel.onQueryChange(it)
             }
         }
@@ -69,9 +71,11 @@ class SearchActivity : AppCompatActivity() {
 @Composable
 fun SearchScreenContent(
     searchScreenState: SearchScreenState,
-    pagingItems: LazyPagingItems<SearchUiModel>,
+    pagingDataFlow: Flow<PagingData<SearchUiModel>>,
     onQueryChange: (String) -> Unit
 ) {
+
+    val pagingItems = pagingDataFlow.collectAsLazyPagingItems()
 
     SearchBar(modifier = Modifier.fillMaxSize(), query = searchScreenState.query,
         onQueryChange = onQueryChange,
@@ -83,30 +87,62 @@ fun SearchScreenContent(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(16.dp)
         ) {
-            items(count = pagingItems.itemCount) {
-                val item = pagingItems[it]
-                if (item != null)
-                    SearchItem(searchUiModel = item)
+            if (pagingItems.itemCount == 0 && pagingItems.loadState.refresh is LoadState.NotLoading)
+                item {
+                    EmptyView(Modifier.fillParentMaxSize())
+                }
+            else if (pagingItems.loadState.refresh is LoadState.Loading)
+                item {
+                    Loading(Modifier.fillParentMaxSize())
+                }
+            else if (pagingItems.loadState.refresh is LoadState.Error)
+                item {
+                    Retry(modifier = Modifier.fillParentMaxSize()) {
+                        pagingItems.retry()
+                    }
+                }
+            else if (pagingItems.itemCount > 0 && pagingItems.loadState.refresh is LoadState.NotLoading)
+                items(count = pagingItems.itemCount) {
+                    val item = pagingItems[it]
+                    if (item != null)
+                        SearchItem(searchUiModel = item)
 
-            }
+                }
 
             item {
-                if (pagingItems.loadState.append is LoadState.Loading)
-                    CircularProgressIndicator(modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.CenterHorizontally))
-                else if (pagingItems.loadState.append is LoadState.Error)
-                    Retry(onClick = { pagingItems.retry() })
+                if (pagingItems.loadState.source.append is LoadState.Loading)
+                    Loading(Modifier.fillParentMaxWidth())
+                else if (pagingItems.loadState.source.append is LoadState.Error)
+                    Retry(
+                        modifier = Modifier.fillParentMaxWidth(),
+                        onClick = { pagingItems.retry() })
             }
         }
     }
 }
 
 @Composable
-fun Retry(onClick: () -> Unit) {
-    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-        Button(onClick = onClick) {
-            Text(text = stringResource(id = R.string.retry))
-        }
+fun EmptyView(modifier: Modifier = Modifier) {
+    Text(
+        modifier = modifier
+            .wrapContentSize(align = Alignment.Center),
+        text = stringResource(id = R.string.no_result_message)
+    )
+}
+
+@Composable
+fun Retry(modifier: Modifier = Modifier, onClick: () -> Unit) {
+    Button(modifier = modifier.wrapContentSize(Alignment.Center), onClick = onClick) {
+        Text(text = stringResource(id = R.string.retry))
     }
+}
+
+@Composable
+fun Loading(modifier: Modifier = Modifier) {
+    CircularProgressIndicator(
+        modifier = modifier
+            .wrapContentSize(Alignment.Center)
+    )
 }
 
 @Composable
