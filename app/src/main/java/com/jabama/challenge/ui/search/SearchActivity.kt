@@ -102,7 +102,10 @@ fun SearchScreenContent(
                     }
                 }
             else if (pagingItems.itemCount > 0 && pagingItems.loadState.refresh is LoadState.NotLoading)
-                items(count = pagingItems.itemCount) {
+                items(count = pagingItems.itemCount , key = {
+                    val item = pagingItems[it]
+                    item?.id ?: it
+                }) {
                     val item = pagingItems[it]
                     if (item != null)
                         SearchItem(searchUiModel = item)
