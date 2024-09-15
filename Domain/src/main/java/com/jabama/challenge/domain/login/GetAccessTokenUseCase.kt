@@ -1,11 +1,11 @@
-package com.jabama.challenge.domain.usecase.login
+package com.jabama.challenge.domain.login
 
-import com.jabama.challenge.data.network.oauth.RequestAccessToken
 import com.jabama.challenge.data.repository.oauth.AccessTokenDataSource
 import com.jabama.challenge.data.repository.token.TokenRepository
 import com.jabama.challenge.ui.main.CLIENT_ID
 import com.jabama.challenge.ui.main.CLIENT_SECRET
-import com.jabama.challenge.ui.main.REDIRECT_URI
+import com.jabama.challenge.ui.a.network.oauth.RequestAccessToken
+import com.jabama.challenge.datmain.REDIRECT_URI
 
 class GetAccessTokenUseCase(
     private val tokenRepository: TokenRepository,

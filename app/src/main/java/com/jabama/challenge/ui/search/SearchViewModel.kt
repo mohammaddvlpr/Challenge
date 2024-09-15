@@ -5,7 +5,7 @@ import androidx.paging.LoadState
 import androidx.paging.LoadStates
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.jabama.challenge.domain.usecase.search.GetSearchFlowUseCase
+import com.jabama.challenge.domain.search.GetSearchFlowUseCase
 import com.jabama.challenge.ui.search.model.SearchScreenState
 import com.jabama.challenge.ui.search.model.UiMapper
 import kotlinx.coroutines.flow.MutableStateFlow

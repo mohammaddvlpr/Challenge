@@ -1,4 +1,4 @@
-package com.jabama.challenge.domain.usecase.accessToken
+package com.jabama.challenge.domain.accessToken
 
 import com.jabama.challenge.data.repository.token.TokenRepository
 

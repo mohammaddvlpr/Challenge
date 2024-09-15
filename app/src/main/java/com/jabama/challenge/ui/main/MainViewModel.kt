@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jabama.challenge.domain.usecase.accessToken.GetIsLoginUseCase
+import com.jabama.challenge.domain.accessToken.GetIsLoginUseCase
 import com.jabama.challenge.login.R
 import kotlinx.coroutines.launch
 

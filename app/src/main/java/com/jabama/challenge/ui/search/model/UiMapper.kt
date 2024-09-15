@@ -1,7 +1,7 @@
 package com.jabama.challenge.ui.search.model
 
 import android.app.Application
-import com.jabama.challenge.domain.usecase.search.model.SearchModel
+import com.jabama.challenge.domain.search.model.SearchModel
 import com.jabama.challenge.login.R
 
 class UiMapper(private val appContext: Application) {
