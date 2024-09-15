@@ -7,7 +7,7 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.jabama.challenge.domain.search.GetSearchFlowUseCase
 import com.jabama.challenge.ui.search.model.SearchScreenState
-import com.jabama.challenge.ui.search.model.UiMapper
+import com.jabama.challenge.ui.search.model.SearchUiMapper
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,7 +20,7 @@ import kotlin.time.Duration.Companion.milliseconds
 
 class SearchViewModel(
     private val getSearchFlowUseCase: GetSearchFlowUseCase,
-    private val uiMapper: UiMapper
+    private val searchUiMapper: SearchUiMapper
 ) : ViewModel() {
     fun onQueryChange(query: String) {
         _state.update { it.copy(query = query) }
@@ -38,7 +38,7 @@ class SearchViewModel(
         if (it.query.isNotEmpty())
             getSearchFlowUseCase(it.query).map { pagingData ->
                 pagingData.map { searchModel ->
-                    uiMapper.mapToUi(
+                    searchUiMapper.mapToUi(
                         searchModel
                     )
                 }

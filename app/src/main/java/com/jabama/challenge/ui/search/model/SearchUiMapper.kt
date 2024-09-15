@@ -4,7 +4,7 @@ import android.app.Application
 import com.jabama.challenge.domain.search.model.SearchModel
 import com.jabama.challenge.login.R
 
-class UiMapper(private val appContext: Application) {
+class SearchUiMapper(private val appContext: Application) {
 
     fun mapToUi(searchModel: SearchModel): SearchUiModel {
         return SearchUiModel(
