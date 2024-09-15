@@ -1,4 +1,4 @@
-package com.jabama.challenge.domain.login
+package com.jabama.challenge.domain.auth.models
 
 data class ResponseAccessTokenDomainModel(
     var accessToken: String,

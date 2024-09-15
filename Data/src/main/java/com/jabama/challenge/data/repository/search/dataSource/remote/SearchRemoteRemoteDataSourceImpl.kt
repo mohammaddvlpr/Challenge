@@ -7,7 +7,7 @@ import com.jabama.challenge.data.network.PAGE_SIZE
 import com.jabama.challenge.data.network.search.SearchService
 import com.jabama.challenge.data.repository.search.SearchMapper
 import com.jabama.challenge.data.repository.search.paging.SearchPagingSource
-import com.jabama.challenge.domain.search.model.SearchModel
+import com.jabama.challenge.domain.search.models.SearchModel
 import kotlinx.coroutines.flow.Flow
 
 class SearchRemoteRemoteDataSourceImpl(

@@ -6,8 +6,8 @@ import com.jabama.challenge.data.network.REDIRECT_URI
 import com.jabama.challenge.data.network.auth.AuthService
 import com.jabama.challenge.data.network.auth.models.RequestAccessToken
 import com.jabama.challenge.data.repository.apiCall
-import com.jabama.challenge.domain.login.AuthRepository
-import com.jabama.challenge.domain.login.ResponseAccessTokenDomainModel
+import com.jabama.challenge.domain.auth.AuthRepository
+import com.jabama.challenge.domain.auth.models.ResponseAccessTokenDomainModel
 
 class AuthRepositoryImpl(
     private val authService: AuthService,

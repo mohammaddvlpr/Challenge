@@ -1,4 +1,6 @@
-package com.jabama.challenge.domain.login
+package com.jabama.challenge.domain.auth
+
+import com.jabama.challenge.domain.auth.models.ResponseAccessTokenDomainModel
 
 interface AuthRepository {
     suspend fun accessToken(authorizationCode:String): Result<ResponseAccessTokenDomainModel>

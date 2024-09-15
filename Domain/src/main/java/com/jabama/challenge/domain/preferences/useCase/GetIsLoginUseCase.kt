@@ -1,4 +1,6 @@
-package com.jabama.challenge.domain.accessToken
+package com.jabama.challenge.domain.preferences.useCase
+
+import com.jabama.challenge.domain.preferences.PreferencesRepository
 
 
 class GetIsLoginUseCase(

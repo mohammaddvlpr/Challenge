@@ -1,4 +1,6 @@
-package com.jabama.challenge.domain.login
+package com.jabama.challenge.domain.auth.useCase
+
+import com.jabama.challenge.domain.auth.AuthRepository
 
 class GetAuthorizationUrlUseCase(private val authRepository: AuthRepository) {
 

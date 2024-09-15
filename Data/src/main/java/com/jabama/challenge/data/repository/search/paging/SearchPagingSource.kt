@@ -7,7 +7,7 @@ import com.jabama.challenge.data.network.search.models.SearchRepositoryModel
 import com.jabama.challenge.data.network.search.SearchService
 import com.jabama.challenge.data.repository.apiCall
 import com.jabama.challenge.data.repository.search.SearchMapper
-import com.jabama.challenge.domain.search.model.SearchModel
+import com.jabama.challenge.domain.search.models.SearchModel
 
 class SearchPagingSource(
     private val query: String,

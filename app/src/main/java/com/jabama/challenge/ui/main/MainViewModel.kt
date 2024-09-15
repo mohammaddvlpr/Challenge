@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jabama.challenge.domain.accessToken.GetIsLoginUseCase
-import com.jabama.challenge.domain.login.GetAuthorizationUrlUseCase
+import com.jabama.challenge.domain.preferences.useCase.GetIsLoginUseCase
+import com.jabama.challenge.domain.auth.useCase.GetAuthorizationUrlUseCase
 import com.jabama.challenge.login.R
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow

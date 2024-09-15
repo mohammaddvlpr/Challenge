@@ -1,7 +1,8 @@
-package com.jabama.challenge.domain.search
+package com.jabama.challenge.domain.search.useCase
 
 import androidx.paging.PagingData
-import com.jabama.challenge.domain.search.model.SearchModel
+import com.jabama.challenge.domain.search.SearchRepository
+import com.jabama.challenge.domain.search.models.SearchModel
 import kotlinx.coroutines.flow.Flow
 
 class GetSearchFlowUseCase(private val searchRepository: SearchRepository) {

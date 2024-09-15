@@ -1,4 +1,4 @@
-package com.jabama.challenge.domain.search.model
+package com.jabama.challenge.domain.search.models
 
 data class SearchModel(
     val id:Long,
