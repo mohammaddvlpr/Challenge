@@ -5,10 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jabama.challenge.domain.accessToken.GetIsLoginUseCase
+import com.jabama.challenge.domain.login.GetAuthorizationUrlUseCase
 import com.jabama.challenge.login.R
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val getIsLoginUseCase: GetIsLoginUseCase) : ViewModel() {
+class MainViewModel(private val getIsLoginUseCase: GetIsLoginUseCase ,
+    private val getAuthorizationUrlUseCase: GetAuthorizationUrlUseCase) : ViewModel() {
     private val _description = MutableLiveData(0)
     val description: LiveData<Int> = _description
 

@@ -33,4 +33,8 @@ class AuthRepositoryImpl(
         else
             Result.failure(result.exceptionOrNull() ?: Exception("Not known"))
     }
+
+    override fun getAuthorizationUrl(): String {
+        return "https://github.com/login/oauth/authorize?client_id=$CLIENT_ID&redirect_uri=$REDIRECT_URI&scope=repo user&state=0"
+    }
 }
