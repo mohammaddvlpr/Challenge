@@ -1,5 +1,6 @@
 package com.jabama.challenge.data.repository.token
 
+import com.jabama.challenge.domain.accessToken.TokenRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

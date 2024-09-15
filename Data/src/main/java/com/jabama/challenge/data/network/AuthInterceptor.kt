@@ -1,6 +1,6 @@
 package com.jabama.challenge.data.network
 
-import com.jabama.challenge.data.repository.token.TokenRepository
+import com.jabama.challenge.domain.accessToken.TokenRepository
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Response

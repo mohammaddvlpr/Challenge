@@ -3,7 +3,7 @@ package com.jabama.challenge.di
 import com.jabama.challenge.data.network.AuthInterceptor
 import com.jabama.challenge.domain.search.SearchRepository
 import com.jabama.challenge.data.repository.search.SearchRepositoryImpl
-import com.jabama.challenge.data.repository.token.TokenRepository
+import com.jabama.challenge.domain.accessToken.TokenRepository
 import com.jabama.challenge.data.repository.token.TokenRepositoryImpl
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.Interceptor
