@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 class GetSearchFlowUseCase(private val searchRepository: SearchRepository) {
 
-    suspend operator fun invoke(query: String): Flow<PagingData<SearchModel>> {
+    operator fun invoke(query: String): Flow<PagingData<SearchModel>> {
         return searchRepository.getSearchFlow(query = query)
     }
 
