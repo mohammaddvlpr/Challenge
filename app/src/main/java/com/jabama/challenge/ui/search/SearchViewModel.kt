@@ -8,6 +8,8 @@ import androidx.paging.map
 import com.jabama.challenge.domain.search.useCase.GetSearchFlowUseCase
 import com.jabama.challenge.ui.search.model.SearchScreenState
 import com.jabama.challenge.ui.search.model.SearchUiMapper
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -34,6 +36,7 @@ class SearchViewModel(
     val state: StateFlow<SearchScreenState> = _state.asStateFlow()
 
 
+    @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
     val pagingFlow = _state.debounce(100.milliseconds).flatMapLatest {
         if (it.query.isNotEmpty())
             getSearchFlowUseCase(it.query).map { pagingData ->
