@@ -1,4 +1,4 @@
-package com.jabama.challenge.data.network.oauth
+package com.jabama.challenge.data.network.auth
 
 import retrofit2.Response
 import retrofit2.http.Body

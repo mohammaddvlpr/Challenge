@@ -1,6 +1,6 @@
 package com.jabama.challenge.data.repository.oauth
 
-import com.jabama.challenge.data.network.oauth.ResponseAccessToken
+import com.jabama.challenge.data.network.auth.ResponseAccessToken
 import com.jabama.challenge.domain.login.ResponseAccessTokenDomainModel
 
 class AuthMapper {

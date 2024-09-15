@@ -1,4 +1,4 @@
-package com.jabama.challenge.data.network.oauth
+package com.jabama.challenge.data.network.auth
 
 import com.google.gson.annotations.SerializedName
 

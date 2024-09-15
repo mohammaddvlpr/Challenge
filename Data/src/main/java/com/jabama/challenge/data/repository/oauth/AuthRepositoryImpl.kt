@@ -3,8 +3,8 @@ package com.jabama.challenge.data.repository.oauth
 import com.jabama.challenge.data.network.CLIENT_ID
 import com.jabama.challenge.data.network.CLIENT_SECRET
 import com.jabama.challenge.data.network.REDIRECT_URI
-import com.jabama.challenge.data.network.oauth.AuthService
-import com.jabama.challenge.data.network.oauth.RequestAccessToken
+import com.jabama.challenge.data.network.auth.AuthService
+import com.jabama.challenge.data.network.auth.RequestAccessToken
 import com.jabama.challenge.data.repository.apiCall
 import com.jabama.challenge.domain.login.AuthRepository
 import com.jabama.challenge.domain.login.ResponseAccessTokenDomainModel
