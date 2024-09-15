@@ -1,5 +1,7 @@
 package com.jabama.challenge.data.network.auth
 
+import com.jabama.challenge.data.network.auth.models.RequestAccessToken
+import com.jabama.challenge.data.network.auth.models.ResponseAccessToken
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers

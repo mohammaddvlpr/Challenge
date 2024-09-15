@@ -1,6 +1,6 @@
 package com.jabama.challenge.data.repository.search
 
-import com.jabama.challenge.data.network.search.SearchRepositorySingleModel
+import com.jabama.challenge.data.network.search.models.SearchRepositorySingleModel
 import com.jabama.challenge.domain.search.model.SearchModel
 
 class SearchMapper {

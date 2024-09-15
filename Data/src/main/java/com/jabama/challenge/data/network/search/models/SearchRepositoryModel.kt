@@ -1,4 +1,4 @@
-package com.jabama.challenge.data.network.search
+package com.jabama.challenge.data.network.search.models
 
 import com.google.gson.annotations.SerializedName
 

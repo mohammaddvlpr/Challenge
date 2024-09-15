@@ -1,6 +1,7 @@
 package com.jabama.challenge.data.network.search
 
 import com.jabama.challenge.data.network.PAGE_SIZE
+import com.jabama.challenge.data.network.search.models.SearchRepositoryModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
