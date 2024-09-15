@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 class LoginViewModel(
     private val getAccessTokenUseCase: GetAccessTokenUseCase
 ) : ViewModel() {
+    private var receivedAccessToken = false
     private val _description = MutableLiveData(R.string.please_wait)
     val description: LiveData<Int> = _description
 
@@ -21,13 +22,14 @@ class LoginViewModel(
     val showSearch: LiveData<Boolean> = _showSearch
 
     fun onAuthorizationCodeReceived(code: String?) {
-        code.takeIf { !it.isNullOrEmpty() }?.let {
+        if (!code.isNullOrEmpty() && !receivedAccessToken) {
             _description.value = R.string.authorization_code_received_message
             _showProgress.value = true
 
             viewModelScope.launch {
-                val result = getAccessTokenUseCase(it)
+                val result = getAccessTokenUseCase(code)
                 if (result) {
+                    receivedAccessToken = true
                     _description.value = R.string.access_token_received_message
                     _showProgress.value = false
                     _showSearch.value = true
@@ -35,6 +37,15 @@ class LoginViewModel(
 
             }
 
+        }else if (receivedAccessToken){
+            _description.value = R.string.access_token_received_message
+            _showProgress.value = false
+            _showSearch.value = true
+
+        }else{
+            _description.value = R.string.authorization_code_empty_message
+            _showProgress.value = false
+            _showSearch.value = true
         }
     }
 
