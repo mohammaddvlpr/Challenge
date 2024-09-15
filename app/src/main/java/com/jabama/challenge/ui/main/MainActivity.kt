@@ -7,8 +7,10 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import com.jabama.challenge.login.R
 import com.jabama.challenge.ui.search.SearchActivity
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -51,13 +53,14 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.showSearch.observe(this) {
             search.isVisible = it
         }
-        
-        mainViewModel.openUri.observe(this){
 
-            val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(it)
-            startActivity(i)
+        lifecycleScope.launch {
+            mainViewModel.openUri.collect {
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(it)
+                startActivity(i)
 
+            }
         }
     }
 }
