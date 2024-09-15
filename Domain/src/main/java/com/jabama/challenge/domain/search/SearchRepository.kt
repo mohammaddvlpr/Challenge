@@ -1,4 +1,4 @@
-package com.jabama.challenge.data.repository.search
+package com.jabama.challenge.domain.search
 
 import androidx.paging.PagingData
 import com.jabama.challenge.domain.search.model.SearchModel

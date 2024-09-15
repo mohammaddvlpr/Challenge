@@ -1,7 +1,7 @@
 package com.jabama.challenge.di
 
 import com.jabama.challenge.data.network.AuthInterceptor
-import com.jabama.challenge.data.repository.search.SearchRepository
+import com.jabama.challenge.domain.search.SearchRepository
 import com.jabama.challenge.data.repository.search.SearchRepositoryImpl
 import com.jabama.challenge.data.repository.token.TokenRepository
 import com.jabama.challenge.data.repository.token.TokenRepositoryImpl
