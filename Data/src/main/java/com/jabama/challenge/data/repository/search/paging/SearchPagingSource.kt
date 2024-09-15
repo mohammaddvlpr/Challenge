@@ -1,5 +1,7 @@
 package com.jabama.challenge.data.repository.search.paging
 
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.jabama.challenge.data.network.PAGE_SIZE
 import com.jabama.challenge.data.network.search.SearchRepositoryModel
 import com.jabama.challenge.data.network.search.SearchService

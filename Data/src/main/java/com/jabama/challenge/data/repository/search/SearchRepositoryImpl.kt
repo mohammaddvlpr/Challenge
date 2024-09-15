@@ -1,5 +1,6 @@
 package com.jabama.challenge.data.repository.search
 
+import androidx.paging.PagingData
 import com.jabama.challenge.data.repository.search.dataSource.remote.SearchRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 

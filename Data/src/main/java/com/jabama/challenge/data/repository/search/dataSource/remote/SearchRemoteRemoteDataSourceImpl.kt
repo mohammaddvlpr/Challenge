@@ -1,5 +1,8 @@
 package com.jabama.challenge.data.repository.search.dataSource.remote
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.jabama.challenge.data.network.PAGE_SIZE
 import com.jabama.challenge.data.network.search.SearchService
 import com.jabama.challenge.data.repository.search.SearchMapper

@@ -13,4 +13,5 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson)
+    implementation(libs.paging.common)
 }
