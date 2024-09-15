@@ -1,4 +1,4 @@
-package com.jabama.challenge.data.repository.oauth
+package com.jabama.challenge.data.repository.auth
 
 import com.jabama.challenge.data.network.auth.models.ResponseAccessToken
 import com.jabama.challenge.domain.login.ResponseAccessTokenDomainModel

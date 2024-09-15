@@ -1,8 +1,8 @@
 package com.jabama.challenge.di
 
 import com.jabama.challenge.data.network.auth.AuthService
-import com.jabama.challenge.data.repository.oauth.AuthMapper
-import com.jabama.challenge.data.repository.oauth.AuthRepositoryImpl
+import com.jabama.challenge.data.repository.auth.AuthMapper
+import com.jabama.challenge.data.repository.auth.AuthRepositoryImpl
 import com.jabama.challenge.domain.login.AuthRepository
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
