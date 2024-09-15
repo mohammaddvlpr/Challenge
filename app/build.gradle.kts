@@ -41,45 +41,44 @@ android {
 }
 
 dependencies {
-//    implementation( fileTree(dir: "libs", include: ["*.jar"]))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22")
-    implementation("androidx.appcompat:appcompat:1.0.2")
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    implementation("com.google.android.material:material:1.0.0")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("io.insert-koin:koin-android:3.0.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.5")
+    implementation(libs.kotlin.stdlib.jdk7)
+    implementation(libs.appcompat)
+    implementation(libs.constraintlayout)
+    implementation(libs.material)
+    implementation(libs.retrofit)
+    implementation(libs.okhttp)
+    implementation(libs.koin.android)
+    implementation(libs.lifecycle.viewmodel.ktx)
 
 
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.1")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
-    implementation("androidx.preference:preference-ktx:1.1.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
+    implementation(libs.kotlin.stdlib.jdk7.v1350)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.logging.interceptor)
+    implementation(libs.preference.ktx)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.retrofit2.kotlin.coroutines.adapter)
 
 //    paging
-    implementation("androidx.paging:paging-runtime-ktx:3.3.2")
+    implementation(libs.paging.runtime.ktx)
 //    compose paging
-    implementation("androidx.paging:paging-compose:3.3.2")
+    implementation(libs.paging.compose)
 
 //    compose
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.activity:activity-compose:1.8.2")
+    implementation(libs.comopse.ui)
+    implementation(libs.comopse.graphics)
+    implementation(libs.comopse.ui.tooling.preview)
+    implementation(libs.comopse.material3)
+    implementation(libs.activity.compose)
 
 //    compose image loading
-    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation(libs.coil.compose)
 
 
 
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("androidx.test:runner:1.1.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.1.1")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.runner)
+    androidTestImplementation(libs.espresso.core)
 }
