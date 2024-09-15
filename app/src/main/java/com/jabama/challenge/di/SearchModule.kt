@@ -2,8 +2,10 @@ package com.jabama.challenge.di
 
 import com.jabama.challenge.data.network.search.SearchService
 import com.jabama.challenge.data.repository.search.SearchMapper
+import com.jabama.challenge.data.repository.search.SearchRepositoryImpl
 import com.jabama.challenge.data.repository.search.dataSource.remote.SearchRemoteDataSource
 import com.jabama.challenge.data.repository.search.dataSource.remote.SearchRemoteRemoteDataSourceImpl
+import com.jabama.challenge.domain.search.SearchRepository
 import com.jabama.challenge.ui.search.model.UiMapper
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -14,5 +16,5 @@ val searchModule = module {
     factory<SearchRemoteDataSource> { SearchRemoteRemoteDataSourceImpl(get(), get()) }
     factory<UiMapper> { UiMapper(get()) }
     factory<SearchMapper> { SearchMapper() }
-
+    factory { SearchRepositoryImpl(get()) as SearchRepository }
 }

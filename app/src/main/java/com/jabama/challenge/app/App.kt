@@ -3,9 +3,9 @@ package com.jabama.challenge.app
 import android.app.Application
 import androidx.preference.PreferenceManager
 import com.jabama.challenge.data.repository.prefrences.PreferencesRepositoryImpl
-import com.jabama.challenge.di.accessTokenModule
 import com.jabama.challenge.di.authModule
 import com.jabama.challenge.di.networkModule
+import com.jabama.challenge.di.preferencesModule
 import com.jabama.challenge.di.searchModule
 import com.jabama.challenge.di.useCaseModule
 import com.jabama.challenge.di.viewModelModule
@@ -26,7 +26,7 @@ class App : Application() {
                 listOf(
                     appModule,
                     networkModule,
-                    accessTokenModule,
+                    preferencesModule,
                     viewModelModule,
                     useCaseModule,
                     searchModule,
