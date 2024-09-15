@@ -6,13 +6,13 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.Constants.REDIRECT_URI
 
 class GetAccessTokenUseCase(
     private val tokenRepository: TokenRepository,
-    private val accessTokenDataSource: AccessTokenDataSource
+    private val authRepository: AuthRepository
 ) {
 
 
     suspend operator fun invoke(authorizationCode: String): Boolean {
-        val response = accessTokenDataSource.accessToken(
-            RequestAccessToken(
+        val response = authRepository.accessToken(
+            RequestAccessTokenDomainModel(
                 CLIENT_ID,
                 CLIENT_SECRET,
                 authorizationCode,
@@ -21,10 +21,10 @@ class GetAccessTokenUseCase(
             )
         )
 
-        val body = response.body()
+        val result = response.getOrNull()
 
-        return if (body != null && response.isSuccessful) {
-            tokenRepository.saveToken(body.accessToken)
+        return if (result != null && response.isSuccess) {
+            tokenRepository.saveToken(result.accessToken)
             true
 
         } else
