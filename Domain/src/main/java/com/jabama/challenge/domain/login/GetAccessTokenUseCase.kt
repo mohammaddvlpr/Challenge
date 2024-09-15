@@ -1,11 +1,11 @@
 package com.jabama.challenge.domain.login
 
-import com.jabama.challenge.domain.accessToken.TokenRepository
+import com.jabama.challenge.domain.accessToken.PreferencesRepository
 import com.sun.org.apache.xalan.internal.xsltc.compiler.Constants.REDIRECT_URI
 
 
 class GetAccessTokenUseCase(
-    private val tokenRepository: TokenRepository,
+    private val preferencesRepository: PreferencesRepository,
     private val authRepository: AuthRepository
 ) {
 
@@ -24,7 +24,7 @@ class GetAccessTokenUseCase(
         val result = response.getOrNull()
 
         return if (result != null && response.isSuccess) {
-            tokenRepository.saveToken(result.accessToken)
+            preferencesRepository.saveToken(result.accessToken)
             true
 
         } else

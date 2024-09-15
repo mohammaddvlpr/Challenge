@@ -2,7 +2,7 @@ package com.jabama.challenge.app
 
 import android.app.Application
 import androidx.preference.PreferenceManager
-import com.jabama.challenge.data.repository.token.TokenRepositoryImpl
+import com.jabama.challenge.data.repository.prefrences.PreferencesRepositoryImpl
 import com.jabama.challenge.di.accessTokenModule
 import com.jabama.challenge.di.networkModule
 import com.jabama.challenge.di.searchModule
@@ -35,7 +35,7 @@ class App : Application() {
     }
 
     private val appModule = module {
-        factory { TokenRepositoryImpl(get()) }
+        factory { PreferencesRepositoryImpl(get()) }
         single(named(APPLICATION_CONTEXT)) { applicationContext }
         single { PreferenceManager.getDefaultSharedPreferences(get()) }
     }

@@ -1,15 +1,15 @@
 package com.jabama.challenge.data.network
 
-import com.jabama.challenge.domain.accessToken.TokenRepository
+import com.jabama.challenge.domain.accessToken.PreferencesRepository
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class AuthInterceptor(private val tokenRepository: TokenRepository) : Interceptor {
+class AuthInterceptor(private val preferencesRepository: PreferencesRepository) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val accessToken: String
         runBlocking {
-            accessToken = tokenRepository.readToken()
+            accessToken = preferencesRepository.readToken()
         }
         val request = chain.request().newBuilder()
             .apply {

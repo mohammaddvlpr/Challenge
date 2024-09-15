@@ -1,12 +1,12 @@
-package com.jabama.challenge.data.repository.token
+package com.jabama.challenge.data.repository.prefrences
 
-import com.jabama.challenge.domain.accessToken.TokenRepository
+import com.jabama.challenge.domain.accessToken.PreferencesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 private const val TOKEN = "TOKEN"
 
-class TokenRepositoryImpl(private val sharedPreferences: SharedPreferences) : TokenRepository {
+class PreferencesRepositoryImpl(private val sharedPreferences: SharedPreferences) : PreferencesRepository {
     override fun saveToken(token: String) {
         sharedPreferences.edit().apply { putString(TOKEN, token) }.apply()
     }
