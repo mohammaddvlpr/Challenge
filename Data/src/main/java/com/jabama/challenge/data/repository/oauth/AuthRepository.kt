@@ -4,6 +4,6 @@ import com.jabama.challenge.data.network.oauth.RequestAccessToken
 import com.jabama.challenge.data.network.oauth.ResponseAccessToken
 import retrofit2.Response
 
-interface AccessTokenDataSource {
+interface AuthRepository {
     suspend fun accessToken(requestAccessToken: RequestAccessToken): Response<ResponseAccessToken>
 }

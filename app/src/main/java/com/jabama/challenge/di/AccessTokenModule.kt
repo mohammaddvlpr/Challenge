@@ -1,13 +1,13 @@
 package com.jabama.challenge.di
 
-import com.jabama.challenge.data.network.oauth.AccessTokenService
-import com.jabama.challenge.data.repository.oauth.AccessTokenDataSource
-import com.jabama.challenge.data.repository.oauth.AccessTokenDataSourceImpl
+import com.jabama.challenge.data.network.oauth.AuthService
+import com.jabama.challenge.data.repository.oauth.AuthRepository
+import com.jabama.challenge.data.repository.oauth.AuthRepositoryImpl
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
 val accessTokenModule = module {
-    factory { get<Retrofit>(named(RETROFIT)).create(AccessTokenService::class.java) }
-    factory<AccessTokenDataSource> { AccessTokenDataSourceImpl(get()) }
+    factory { get<Retrofit>(named(RETROFIT)).create(AuthService::class.java) }
+    factory<AuthRepository> { AuthRepositoryImpl(get()) }
 }
