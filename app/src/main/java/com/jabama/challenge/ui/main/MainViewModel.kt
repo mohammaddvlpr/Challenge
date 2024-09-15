@@ -9,14 +9,14 @@ import com.jabama.challenge.login.R
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val getIsLoginUseCase: GetIsLoginUseCase) : ViewModel() {
-
     private val _description = MutableLiveData(0)
     val description: LiveData<Int> = _description
 
     private val _showSearch = MutableLiveData(false)
     val showSearch: LiveData<Boolean> = _showSearch
 
-
+    private val _openUri = MutableLiveData("")
+    val openUri: LiveData<String> = _openUri
     init {
         viewModelScope.launch {
             val isLogin = getIsLoginUseCase()
@@ -28,6 +28,10 @@ class MainViewModel(private val getIsLoginUseCase: GetIsLoginUseCase) : ViewMode
                 _description.value = R.string.start_message
 
         }
+    }
+
+    fun onAuthorizeClick() {
+        TODO()
     }
 
 }

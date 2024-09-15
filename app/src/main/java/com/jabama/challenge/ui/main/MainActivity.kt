@@ -11,9 +11,6 @@ import com.jabama.challenge.login.R
 import com.jabama.challenge.ui.search.SearchActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-const val CLIENT_ID = "Ov23liNJmGQ53rBTtUCC"
-const val CLIENT_SECRET = "bbb212a4078de9c927ec8cae049b85c15ad32fab"
-const val REDIRECT_URI = "oauth://jabamatest.com"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var authorize: Button
@@ -33,11 +30,7 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
         authorize = findViewById(R.id.authorize)
         authorize.setOnClickListener {
-            val url =
-                "https://github.com/login/oauth/authorize?client_id=$CLIENT_ID&redirect_uri=$REDIRECT_URI&scope=repo user&state=0"
-            val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(url)
-            startActivity(i)
+            mainViewModel.onAuthorizeClick()
         }
 
         description = findViewById(R.id.description)
@@ -57,6 +50,14 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.showSearch.observe(this) {
             search.isVisible = it
+        }
+        
+        mainViewModel.openUri.observe(this){
+
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(it)
+            startActivity(i)
+
         }
     }
 }
