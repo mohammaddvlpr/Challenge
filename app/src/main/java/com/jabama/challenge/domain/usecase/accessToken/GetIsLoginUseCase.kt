@@ -1,6 +1,6 @@
 package com.jabama.challenge.domain.usecase.accessToken
 
-import com.jabama.challenge.repository.token.TokenRepository
+import com.jabama.challenge.data.repository.token.TokenRepository
 
 class GetIsLoginUseCase(
     private val tokenRepository: TokenRepository,

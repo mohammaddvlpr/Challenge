@@ -1,8 +1,8 @@
 package com.jabama.challenge.domain.usecase.login
 
-import com.jabama.challenge.network.oauth.RequestAccessToken
-import com.jabama.challenge.repository.oauth.AccessTokenDataSource
-import com.jabama.challenge.repository.token.TokenRepository
+import com.jabama.challenge.data.network.oauth.RequestAccessToken
+import com.jabama.challenge.data.repository.oauth.AccessTokenDataSource
+import com.jabama.challenge.data.repository.token.TokenRepository
 import com.jabama.challenge.ui.main.CLIENT_ID
 import com.jabama.challenge.ui.main.CLIENT_SECRET
 import com.jabama.challenge.ui.main.REDIRECT_URI

@@ -19,6 +19,7 @@ retrofit = "2.9.0"
 material = "1.0.0"
 retrofit2-kotlin-coroutines-adapter = "0.9.2"
 runner = "1.1.1"
+org-jetbrains-kotlin-jvm = "1.8.22"
 
 [libraries]
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
@@ -49,4 +50,5 @@ comopse-material3 = { module = "androidx.compose.material3:material3" }
 comopse-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 
 [plugins]
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
 

@@ -75,6 +75,7 @@ dependencies {
 
 //    compose image loading
     implementation(libs.coil.compose)
+    implementation(project(":Data"))
 
 
 

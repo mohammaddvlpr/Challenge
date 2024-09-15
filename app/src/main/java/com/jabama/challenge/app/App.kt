@@ -2,12 +2,12 @@ package com.jabama.challenge.app
 
 import android.app.Application
 import androidx.preference.PreferenceManager
-import com.jabama.challenge.network.di.accessTokenModule
-import com.jabama.challenge.network.di.networkModule
-import com.jabama.challenge.network.di.searchModule
-import com.jabama.challenge.network.di.useCaseModule
-import com.jabama.challenge.network.di.viewModelModule
-import com.jabama.challenge.repository.token.TokenRepositoryImpl
+import com.jabama.challenge.data.repository.token.TokenRepositoryImpl
+import com.jabama.challenge.di.accessTokenModule
+import com.jabama.challenge.di.networkModule
+import com.jabama.challenge.di.searchModule
+import com.jabama.challenge.di.useCaseModule
+import com.jabama.challenge.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
